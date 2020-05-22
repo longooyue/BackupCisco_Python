@@ -53,8 +53,8 @@ def read_all(self):
 一开始的第一版是在python官网的实例上增加了保存本地文件  
 第二版是telnet_mutli_BuildinConfig.py 把功能写成函数. 缺点:修改IP不灵活，设备账号密码必须一样  
 第三版是telnet_mutli_WithConfigfile.py 把设备IP放在脚本外. 缺点:设备账号密码必须一样  
-第四版是telnet_mutli_WithConfigjson.py 把设备信息换为json 缺点:有一台怎么都连不上去 优点:设备信息完全脱离脚本 
-通过修改telnetlib来解决此问题,暂时没遇到其他副作用. 
+第四版是telnet_mutli_WithConfigjson.py 把设备信息换为json 缺点:有一台怎么都连不上去 优点:设备信息完全脱离脚本  
+通过修改telnetlib来解决此问题,暂时没遇到其他副作用.  
 ~~第五版是telnet_mutli_WithConfigjson0.2.py 更换了读取字节的方法 缺点:暂不清 优点:解决上一版的问题~~ 
 
 
