@@ -2,11 +2,39 @@
 
 ## 用法
 
-1.修改telnet.json内的
+1.1修改telnet.json内的
 ```json
 "HOSTIP": "172.21.37.249",
 "Username": "cisco",
 "Password": "cisco"
+```
+1.2修改.\Lib\telnetlib.py 下的
+```python
+def read_all(self):
+    """Read all data until EOF; block until connection closed."""
+    self.process_rawq()
+    while not self.eof:
+        self.fill_rawq()
+        self.process_rawq()
+    buf = self.cookedq
+    self.cookedq = ''
+    return buf
+```
+为
+
+```python
+def read_all(self):
+    """Read all data until EOF; block until connection closed."""
+    self.process_rawq()
+    while not self.eof:
+        try:
+            self.fill_rawq()
+            self.process_rawq()
+        except:
+            break
+    buf = self.cookedq
+    self.cookedq = ''
+    return buf
 ```
 
 2.运行py脚本
@@ -26,6 +54,7 @@
 第二版是telnet_mutli_BuildinConfig.py 把功能写成函数. 缺点:修改IP不灵活，设备账号密码必须一样  
 第三版是telnet_mutli_WithConfigfile.py 把设备IP放在脚本外. 缺点:设备账号密码必须一样  
 第四版是telnet_mutli_WithConfigjson.py 把设备信息换为json 缺点:有一台怎么都连不上去 优点:设备信息完全脱离脚本 
+通过修改telnetlib来解决此问题,暂时没遇到其他副作用. 
 ~~第五版是telnet_mutli_WithConfigjson0.2.py 更换了读取字节的方法 缺点:暂不清 优点:解决上一版的问题~~ 
 
 
