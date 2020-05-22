@@ -40,8 +40,9 @@ def read_all(self):
 2.运行py脚本
 
 待完善
-测试过6台交换机，其中一台交换机不管怎么增加time.sleep都会抛出 ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接.
-但是telnet客户端是可以连上去
+~~测试过6台交换机，其中一台交换机不管怎么增加time.sleep都会抛出 ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接.
+但是telnet客户端是可以连上去~~
+需要修改telnetlib才能正常运行.
 
 
 
